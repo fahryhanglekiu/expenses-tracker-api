@@ -1,0 +1,3 @@
+# Ignore a specific folder (include the trailing slash)
+ExpensesTrackerAPI/bin/
+ExpensesTrackerAPI/obj/
