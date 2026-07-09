@@ -31,3 +31,7 @@
 /home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/obj/Debug/net10.0/ExpensesTrackerAPI.pdb
 /home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/obj/Debug/net10.0/ExpensesTrackerAPI.genruntimeconfig.cache
 /home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/obj/Debug/net10.0/ref/ExpensesTrackerAPI.dll
+/home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/obj/Debug/net10.0/ExpensesTrackerAPI.sourcelink.json
+/home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/fahryhanglekiu/Documents/repos/ExpensesTrackerAPI/ExpensesTrackerAPI/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
