@@ -1,5 +1,5 @@
 using ExpensesTrackerAPI.Data;
-using ExpensesTrackerAPI.Models;
+using ExpensesTrackerAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
