@@ -1,3 +1,6 @@
+using ExpensesTrackerAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,16 +8,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddControllers();
 
-if (app.Environment.IsDevelopment())
+builder.Services.AddDbContext<UserDbContext>(options =>
 {
-    Console.Write("App is still on environment");
-}
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    Console.Write("App is still on environment");
+
     app.UseSwagger();
     app.UseSwaggerUI();
     app.MapOpenApi();
