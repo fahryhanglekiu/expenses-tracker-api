@@ -24,7 +24,7 @@ public class UserController : ControllerBase
     }
 
     // Get user by id
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetById(int id)
     {
         var user = await dbContext.Users.FindAsync(id);
@@ -48,7 +48,7 @@ public class UserController : ControllerBase
     }
 
     // Update user by id
-    [HttpPut("{Id}")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, User targetUpdatedUser)
     {
         var user = await dbContext.Users.FindAsync(id);
