@@ -1,4 +1,5 @@
 using ExpensesTrackerAPI.Data;
+using ExpensesTrackerAPI.DTOs;
 using ExpensesTrackerAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +40,15 @@ public class UserController : ControllerBase
 
     // Create User
     [HttpPost]
-    public async Task<ActionResult<User>> Create(User user)
+    public async Task<ActionResult<User>> Create(UserDTO userDTO)
     {
+        var user = new User()
+        {
+            Username = userDTO.Username,
+            Password = userDTO.Password,
+            CreatedAt = DateTime.UtcNow
+        };
+
         dbContext.Users.Add(user);
         await dbContext.SaveChangesAsync();
 
@@ -49,15 +57,15 @@ public class UserController : ControllerBase
 
     // Update user by id
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, User targetUpdatedUser)
+    public async Task<IActionResult> Update(int id, UserDTO updatedUserDTO)
     {
         var user = await dbContext.Users.FindAsync(id);
 
         if(user == null)
             return NotFound();
 
-        user.Username = targetUpdatedUser.Username;
-        user.Role = targetUpdatedUser.Role;
+        user.Username = updatedUserDTO.Username;
+        user.Password = updatedUserDTO.Password;
 
         await dbContext.SaveChangesAsync();
 
