@@ -11,9 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<UserDbContext>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<CategoryDbContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
