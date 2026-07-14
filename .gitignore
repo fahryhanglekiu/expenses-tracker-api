@@ -1,2 +1,11 @@
+# Ignore folders
+bin/
+obj/
+.vs/
+
+# Ignore spesific file formats
 *.db-shm
 *.db-wal
+
+# Specific file
+appsettings.Development.json
