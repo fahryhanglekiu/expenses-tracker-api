@@ -1,6 +1,7 @@
 using ExpensesTrackerAPI.Data;
 using ExpensesTrackerAPI.DTOs;
 using ExpensesTrackerAPI.Entities;
+using ExpensesTrackerAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace ExpensesTrackerAPI.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly UserDbContext dbContext;
+    private readonly IJwtService jwtService;
 
-    public AuthController(UserDbContext dbContext)
+    public AuthController(UserDbContext dbContext, IJwtService jwtService)
     {
         this.dbContext = dbContext;
+        this.jwtService = jwtService;
     }
 
     [HttpPost("register")]
@@ -40,7 +43,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AuthResponseDTO>> Login(UserDTO userDTO)
+    public async Task<ActionResult> Login(UserDTO userDTO)
     {
         var user = await dbContext.Users.FirstOrDefaultAsync(user => user.Username == userDTO.Username);
 
@@ -54,7 +57,10 @@ public class AuthController : ControllerBase
         if(result == PasswordVerificationResult.Failed)
             return Unauthorized("Wrong password!");
 
-        return new AuthResponseDTO("Account successfully logged in");
+        var token = jwtService.GenerateJwtToken(user);
+
+        //return new AuthResponseDTO("Account successfully logged in");
+        return Ok(token);
     }
 
     [HttpPut("change-password")]
