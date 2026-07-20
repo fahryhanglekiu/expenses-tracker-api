@@ -1,5 +1,6 @@
 using ExpensesTrackerAPI.Data;
 using ExpensesTrackerAPI.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ public class CategoryController : ControllerBase
 
     // Get all as list
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<List<Category>>> GetAll()
     {
         return await dbContext.Categories.ToListAsync();
