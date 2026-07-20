@@ -2,6 +2,7 @@
 bin/
 obj/
 .vs/
+.idea/
 
 # Ignore spesific file formats
 *.db-shm
